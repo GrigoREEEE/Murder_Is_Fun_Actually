@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bixmyuikwj8rh"]
+
+[ext_resource type="PackedScene" uid="uid://dhtpw78wsta52" path="res://bomber.tscn" id="1_cdeqg"]
+[ext_resource type="PackedScene" uid="uid://ce1kqhfrm1sfi" path="res://bomb.tscn" id="2_e35ws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a132n"]
+size = Vector2(1144, 40)
+
+[node name="Level" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(521, 560)
+
+[node name="ColorRect" type="ColorRect" parent="Platform"]
+offset_left = -519.0
+offset_top = -20.0
+offset_right = 613.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(51, 0)
+shape = SubResource("RectangleShape2D_a132n")
+
+[node name="Bomber" parent="." instance=ExtResource("1_cdeqg")]
+
+[node name="Bomb" parent="." instance=ExtResource("2_e35ws")]
+position = Vector2(670, 260)
