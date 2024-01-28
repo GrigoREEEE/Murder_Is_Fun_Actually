@@ -11,7 +11,6 @@ func _ready():
 	
 func _physics_process(delta):
 	velocity.y += gravity * delta
-	
 	var collision = move_and_collide(velocity * delta)
 	if !collision: return
 	
@@ -33,6 +32,17 @@ func _on_explosion_life_timeout():
 	self.queue_free()
 
 
-func _on_explosion_area_body_entered(body):
-	if (body.name in ["Head", "Arm_Right", "Arm_Left", "Legs", "Torso"]):
-		print("Body Enter!")
+func _on_explosion_area_area_entered(area):
+	var dir = [-1,1]
+	if area.name == "Character_Area":
+		print(area.get_parent().name)
+		area.get_parent().get_node("Body_Area").set_deferred("disabled", true)
+		#var direction = Vector2(randi()%5, randi()%5).normalized()
+		for i in area.get_parent().get_children():
+			if i.name in ["Head", "Legs", "Arm_Left", "Arm_Right", "Torso"]:
+				var x_direction = (randi() % 10) * dir[(randi() % 2)]
+				var y_direction = (randi() % 10) * dir[(randi() % 2)]
+				i.was_hit = true
+				i.get_node("CollisionShape2D").set_deferred("disabled", false)
+				i.fling(Vector2(x_direction,y_direction).normalized())
+				

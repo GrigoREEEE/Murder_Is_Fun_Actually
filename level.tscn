@@ -23,9 +23,6 @@ offset_bottom = 20.0
 position = Vector2(55, 0)
 shape = SubResource("RectangleShape2D_a132n")
 
-[node name="Bomber" parent="." instance=ExtResource("1_cdeqg")]
-position = Vector2(168, 576)
-
 [node name="Platform2" type="StaticBody2D" parent="."]
 position = Vector2(521, 20)
 collision_layer = 15
@@ -73,5 +70,8 @@ offset_bottom = 20.0
 position = Vector2(55, 0)
 shape = SubResource("RectangleShape2D_a132n")
 
-[node name="Character" parent="." instance=ExtResource("2_gtkxx")]
-position = Vector2(662, 404)
+[node name="Body" parent="." instance=ExtResource("2_gtkxx")]
+position = Vector2(938, 508)
+
+[node name="Bomber" parent="." instance=ExtResource("1_cdeqg")]
+position = Vector2(467, 545)

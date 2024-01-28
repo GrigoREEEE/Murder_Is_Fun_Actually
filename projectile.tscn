@@ -33,6 +33,8 @@ wait_time = 0.3
 scale = Vector2(7, 7)
 
 [node name="Explosion_Area" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion_Area"]
@@ -40,4 +42,4 @@ shape = SubResource("CircleShape2D_daxut")
 
 [connection signal="timeout" from="Explosion_Timer" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="Explosion_Life" to="." method="_on_explosion_life_timeout"]
-[connection signal="body_entered" from="Explosion_Area" to="." method="_on_explosion_area_body_entered"]
+[connection signal="area_entered" from="Explosion_Area" to="." method="_on_explosion_area_area_entered"]
