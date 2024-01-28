@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5huc4h4h5niv"]
+
+[ext_resource type="Script" path="res://Projectile.gd" id="1_7svqg"]
+[ext_resource type="Texture2D" uid="uid://dpmc37xwnxcoj" path="res://Sprite/Bomb.png" id="2_e2wxs"]
+[ext_resource type="PackedScene" uid="uid://cyof4mi4vf3yt" path="res://Particle Effects/explosion.tscn" id="3_kkhfg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uutsh"]
+radius = 63.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_daxut"]
+radius = 533.844
+
+[node name="Projectile" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_7svqg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(6.77, 6.77)
+texture = ExtResource("2_e2wxs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uutsh")
+
+[node name="Explosion_Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Explosion_Life" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Explosion" parent="." instance=ExtResource("3_kkhfg")]
+scale = Vector2(7, 7)
+
+[node name="Explosion_Area" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion_Area"]
+shape = SubResource("CircleShape2D_daxut")
+
+[connection signal="timeout" from="Explosion_Timer" to="." method="_on_explosion_timer_timeout"]
+[connection signal="timeout" from="Explosion_Life" to="." method="_on_explosion_life_timeout"]
+[connection signal="body_entered" from="Explosion_Area" to="." method="_on_explosion_area_body_entered"]

@@ -17,8 +17,8 @@ func _on_explosion_timer_timeout():
 	$Explosion.show()
 	$Explosion.emitting = true
 	$Sprite2D.hide()
+	$Explosion_Life.start()
 
 
 func _on_explosion_life_timeout():
-	
 	self.queue_free()

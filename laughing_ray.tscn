@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsgqpaih5b5h7"]
+
+[ext_resource type="Script" path="res://Laughing_Ray.gd" id="1_7xrhq"]
+[ext_resource type="Shader" path="res://laughing_ray.gdshader" id="2_6tkip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtbe0"]
+shader = ExtResource("2_6tkip")
+
+[sub_resource type="Environment" id="Environment_24sbh"]
+background_mode = 3
+background_energy_multiplier = 12.0
+ambient_light_color = Color(0.635294, 0.635294, 0.635294, 1)
+ambient_light_energy = 8.9
+tonemap_exposure = 1.17
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_blend_mode = 0
+glow_hdr_threshold = 0.2
+
+[node name="Laughing_Ray" type="RayCast2D"]
+position = Vector2(119, 208)
+target_position = Vector2(1152, 0)
+script = ExtResource("1_7xrhq")
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_vtbe0")
+points = PackedVector2Array(0, 0, 100, 0)
+default_color = Color(0.333333, 0.615686, 0.196078, 0.611765)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_24sbh")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 200
+lifetime = 5.0
+randomness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 420.0
+angular_velocity_min = 58.18
+angular_velocity_max = 58.18
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+color = Color(0.333333, 0.615686, 0.196078, 1)

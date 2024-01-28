@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyof4mi4vf3yt"]
+[gd_scene load_steps=6 format=3 uid="uid://cyof4mi4vf3yt"]
 
 [sub_resource type="Curve" id="Curve_s4arq"]
 _data = [Vector2(0.0168539, 1), 0.0, 0.0, 0, 0, Vector2(0.994382, 0), 0.0, 0.0, 0, 0]
@@ -7,6 +7,22 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_ma40w"]
 offsets = PackedFloat32Array(0.52, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_oxybr"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.0887097, 360), 0.0, 0.0, 0, 0, Vector2(0.548387, -3.95605), 0.0, 0.0, 0, 0, Vector2(1, -272.967), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_60s5q"]
+min_value = 1.0
+max_value = 3.0
+_data = [Vector2(0, 1.72527), 0.0, 0.0, 0, 0, Vector2(0.403226, 1.37363), 0.0, 0.0, 0, 0, Vector2(0.983871, 1.02198), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_fmv07"]
+offsets = PackedFloat32Array(0.197917, 0.46875, 0.791667)
+colors = PackedColorArray(1, 0.566, 0.07, 1, 0.823529, 0.298039, 0, 0.752941, 0.329412, 0.0588235, 0, 0.788235)
 
 [node name="Explosion" type="CPUParticles2D"]
 emitting = false
@@ -25,3 +41,26 @@ scale_amount_min = 15.0
 scale_amount_max = 20.0
 scale_amount_curve = SubResource("Curve_s4arq")
 color_ramp = SubResource("Gradient_ma40w")
+
+[node name="Fire" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 29.44
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+angular_velocity_min = 200.0
+angular_velocity_max = 400.0
+angular_velocity_curve = SubResource("Curve_oxybr")
+damping_min = 31.944
+damping_max = 52.777
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_60s5q")
+color_ramp = SubResource("Gradient_fmv07")

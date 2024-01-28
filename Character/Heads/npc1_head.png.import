@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpmc37xwnxcoj"
-path="res://.godot/imported/Bomb.png-d7b7df090f02fcb8ff43f2f2bc7446cd.ctex"
+uid="uid://td2nn18sg1ne"
+path="res://.godot/imported/npc1_head.png-29293cafb14b0de1fc7ed7c7dc31ee9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Bomb.png"
-dest_files=["res://.godot/imported/Bomb.png-d7b7df090f02fcb8ff43f2f2bc7446cd.ctex"]
+source_file="res://Character/Heads/npc1_head.png"
+dest_files=["res://.godot/imported/npc1_head.png-29293cafb14b0de1fc7ed7c7dc31ee9e.ctex"]
 
 [params]
 

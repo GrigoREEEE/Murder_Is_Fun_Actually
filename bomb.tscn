@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ce1kqhfrm1sfi"]
 
-[ext_resource type="Texture2D" uid="uid://dpmc37xwnxcoj" path="res://Items/Bomb.png" id="1_oifj3"]
+[ext_resource type="Texture2D" uid="uid://dpmc37xwnxcoj" path="res://Sprite/Bomb.png" id="1_oifj3"]
 [ext_resource type="Script" path="res://bomb.gd" id="1_svim5"]
 [ext_resource type="PackedScene" uid="uid://cyof4mi4vf3yt" path="res://Particle Effects/explosion.tscn" id="3_8fg0m"]
 
@@ -33,6 +33,7 @@ shape = SubResource("CircleShape2D_gbl4c")
 
 [node name="Explosion_Timer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 autostart = true
 
 [node name="Explosion_Life" type="Timer" parent="."]
@@ -41,6 +42,5 @@ one_shot = true
 
 [node name="Explosion" parent="." instance=ExtResource("3_8fg0m")]
 
-[connection signal="area_entered" from="Explosion_Area" to="." method="_on_explosion_area_area_entered"]
 [connection signal="timeout" from="Explosion_Timer" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="Explosion_Life" to="." method="_on_explosion_life_timeout"]
